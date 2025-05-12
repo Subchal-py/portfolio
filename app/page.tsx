@@ -235,7 +235,7 @@ export default function Portfolio() {
               className="h-14 px-6 text-lg font-bold border-4 border-black bg-green-400 text-black hover:bg-green-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
             >
               <Link href="#projects">
-                VIEW PROJECTS <ArrowRight className="ml-2 h-5 w-5" />
+                VIEW PROJECT <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button

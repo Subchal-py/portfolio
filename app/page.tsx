@@ -231,7 +231,7 @@ export default function Portfolio() {
             className="rounded-full overflow-hidden w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-6 md:mb-8 border-8 border-black bg-orange-400 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
             variants={scaleUp}
           >
-            <img src="/nischal.png?height=160&width=160" alt="Nischal Neupane" className="object-cover" />
+            <img src="/lode.jpg?height=160&width=160" alt="Nischal Neupane" className="object-cover" />
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
               animate={{

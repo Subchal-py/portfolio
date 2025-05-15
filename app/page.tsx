@@ -3,12 +3,40 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Github, Mail, ExternalLink, Linkedin, Twitter, ArrowRight, Zap } from "lucide-react"
+import { Github, Mail, ExternalLink, Linkedin, Twitter, ArrowRight, Zap, Facebook } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
+import NavbarMb from './Navbar'
 
 export default function Portfolio() {
+  const pathname = usePathname()
+  const NavLists = [
+    {
+      name: 'Home',
+      link: '/'
+    },
+    {
+      name: 'About',
+      link: '#about'
+    }
+    ,
+    {
+      name: 'Skills',
+      link: '#skills'
+    },
+    {
+      name: 'Projects',
+      link: '#projects'
+    },
+    {
+      name: 'Contact',
+      link: '#contact'
+    }
+  ]
+  const [isSidebarOpen, setisSidebarOpen] = useState(false)
+
   const [skillValues, setSkillValues] = useState({
     react: 0,
     typescript: 0,
@@ -89,14 +117,15 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-yellow-50 text-black">
       {/* Navigation */}
-      <header className="sticky top-0 z-40 w-full bg-pink-500 border-b-4 border-black">
+      <header className="sticky top-0 z-40 w-full bg-stone-700 border-b-4 border-black">
         <div className="container flex h-20 items-center">
-          <div className="mr-4 hidden md:flex">
+          <div className="mr-4 hidden  md:flex text-white">
             <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-black text-2xl tracking-tighter">NISCHAL NEUPANE</span>
+              <span className="font-black text-2xl tracking-tighter" >NISCHAL NEUPANE</span>
             </Link>
             <nav className="flex items-center space-x-6 text-base font-bold">
-              <Link href="#about" className="transition-colors hover:text-yellow-300 relative">
+              <Link href="#about" className="transition-colors 
+              hover:text-blue-300 relative">
                 <span className="relative z-10">ABOUT</span>
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-3 bg-green-400 -z-10"
@@ -105,7 +134,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.2 }}
                 />
               </Link>
-              <Link href="#skills" className="transition-colors hover:text-yellow-300 relative">
+              <Link href="#skills" className="transition-colors hover:text-blue-300 relative">
                 <span className="relative z-10">SKILLS</span>
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-3 bg-green-400 -z-10"
@@ -114,7 +143,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.2 }}
                 />
               </Link>
-              <Link href="#projects" className="transition-colors hover:text-yellow-300 relative">
+              <Link href="#projects" className="transition-colors hover:text-blue-300 relative">
                 <span className="relative z-10">PROJECTS</span>
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-3 bg-green-400 -z-10"
@@ -123,7 +152,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.2 }}
                 />
               </Link>
-              <Link href="#contact" className="transition-colors hover:text-yellow-300 relative">
+              <Link href="#contact" className="transition-colors hover:text-blue-300 relative">
                 <span className="relative z-10">CONTACT</span>
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-3 bg-green-400 -z-10"
@@ -133,6 +162,12 @@ export default function Portfolio() {
                 />
               </Link>
             </nav>
+          </div>
+          <div className="flex items-center justify-between w-full text-white md:hidden">
+            <h1 className="text-3xl">
+              Nischal
+            </h1>
+            <NavbarMb open={isSidebarOpen} onOpenChange={setisSidebarOpen} items={NavLists} pathname={pathname} />
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <div className="w-full flex-1 md:w-auto md:flex-none">
@@ -214,7 +249,7 @@ export default function Portfolio() {
             className="text-5xl md:text-7xl font-black tracking-tight mb-4 relative inline-block"
             variants={fadeIn}
           >
-            <span className="relative z-10">NISCHAL NEUPANE</span>
+            <span className="relative z-10">- NISCHAL NEUPANE -</span>
             <motion.span
               className="absolute -bottom-2 left-0 w-full h-6 bg-pink-500 -z-10"
               initial={{ width: 0 }}
@@ -223,7 +258,7 @@ export default function Portfolio() {
             />
           </motion.h1>
           <motion.h2 className="text-2xl md:text-3xl font-bold mb-6 text-purple-700" variants={fadeIn}>
-            FULL STACK DEVELOPER & UI/UX DESIGNER
+            FULL STACK DEVELOPER
           </motion.h2>
           <motion.p className="max-w-[42rem] mb-8 text-lg font-medium" variants={fadeIn}>
             Crafting beautiful, functional, and user-friendly digital experiences with a passion for clean code and
@@ -300,22 +335,22 @@ export default function Portfolio() {
               variants={fadeIn}
               transition={{ delay: 0.2 }}
             >
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1  md:grid-cols-2 gap-6 min-w-[300px]">
                 <div>
                   <h3 className="font-bold text-lg text-purple-700">NAME</h3>
                   <p className="font-bold text-xl">Nischal Neupane</p>
                 </div>
-                <div>
+                <div className="w-full text-wrap">
                   <h3 className="font-bold text-lg text-purple-700">EMAIL</h3>
-                  <p className="font-bold text-xl">neupanenischal221@gmail.com</p>
+                  <p className="font-bold text-xl text-wrap">neupanenischal221@gmail.com</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-purple-700">LOCATION</h3>
-                  <p className="font-bold text-xl">Kathmandu, Nepal</p>
+                  <p className="font-bold text-xl">Nawalpur, Nepal</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-purple-700">EXPERIENCE</h3>
-                  <p className="font-bold text-xl">4+ Years</p>
+                  <p className="font-bold text-xl">Still Learnin..</p>
                 </div>
               </div>
               <motion.div
@@ -330,7 +365,7 @@ export default function Portfolio() {
                     className="h-12 w-12 bg-pink-500 border-4 border-black text-black hover:bg-pink-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                     asChild
                   >
-                    <Link href="https://github.com" target="_blank">
+                    <Link href="https://github.com/Subchal-py" target="_blank">
                       <Github className="h-5 w-5" />
                       <span className="sr-only">GitHub</span>
                     </Link>
@@ -354,9 +389,9 @@ export default function Portfolio() {
                     className="h-12 w-12 bg-orange-400 border-4 border-black text-black hover:bg-orange-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                     asChild
                   >
-                    <Link href="https://twitter.com" target="_blank">
-                      <Twitter className="h-5 w-5" />
-                      <span className="sr-only">Twitter</span>
+                    <Link href="https://www.facebook.com/nischal.neupane.37266?mibextid=ZbWKwL" target="_blank">
+                      <Facebook className="h-5 w-5" />
+                      <span className="sr-only">Facebook</span>
                     </Link>
                   </Button>
                 </motion.div>
